@@ -1,6 +1,6 @@
 import argparse
 import random
-import uuid
+
 import json
 import os
 import pandas as pd
@@ -88,7 +88,7 @@ def generate_normal_data(banks, num_accounts, num_transactions, start_date, end_
             tx_type = "OFF_RAMP"
             
         transactions.append({
-            "transaction_id": f"TXN_{uuid.uuid4().hex[:10].upper()}",
+            "transaction_id": f"TXN_{''.join(random.choices('0123456789ABCDEF', k=10))}",
             "timestamp": t_time.isoformat(),
             "sender_account": sender["account_id"],
             "receiver_account": receiver["account_id"],

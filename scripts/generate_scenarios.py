@@ -1,5 +1,5 @@
 import random
-import uuid
+
 from datetime import datetime, timedelta
 
 def random_date(start, end):
@@ -8,10 +8,12 @@ def random_date(start, end):
     )
 
 def generate_account_id(prefix="ACC"):
-    return f"{prefix}_{uuid.uuid4().hex[:8].upper()}"
+    hex_str = ''.join(random.choices('0123456789ABCDEF', k=8))
+    return f"{prefix}_{hex_str}"
 
 def generate_device_id():
-    return f"DEV_{uuid.uuid4().hex[:12].upper()}"
+    hex_str = ''.join(random.choices('0123456789ABCDEF', k=12))
+    return f"DEV_{hex_str}"
 
 def generate_location():
     cities = ["Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad"]
@@ -40,7 +42,7 @@ def create_mule_network_pass_through(banks, start_time, network_id):
     
     t1_time = start_time
     transactions.append({
-        "transaction_id": f"TXN_{uuid.uuid4().hex[:10].upper()}",
+        "transaction_id": f"TXN_{''.join(random.choices('0123456789ABCDEF', k=10))}",
         "timestamp": t1_time.isoformat(),
         "sender_account": victim["account_id"],
         "receiver_account": mule1["account_id"],
@@ -57,7 +59,7 @@ def create_mule_network_pass_through(banks, start_time, network_id):
     amount = int(amount * 0.98) # Keep a cut
     t2_time = t1_time + timedelta(minutes=random.randint(2, 30))
     transactions.append({
-        "transaction_id": f"TXN_{uuid.uuid4().hex[:10].upper()}",
+        "transaction_id": f"TXN_{''.join(random.choices('0123456789ABCDEF', k=10))}",
         "timestamp": t2_time.isoformat(),
         "sender_account": mule1["account_id"],
         "receiver_account": mule2["account_id"],
@@ -74,7 +76,7 @@ def create_mule_network_pass_through(banks, start_time, network_id):
     amount = int(amount * 0.99)
     t3_time = t2_time + timedelta(minutes=random.randint(2, 30))
     transactions.append({
-        "transaction_id": f"TXN_{uuid.uuid4().hex[:10].upper()}",
+        "transaction_id": f"TXN_{''.join(random.choices('0123456789ABCDEF', k=10))}",
         "timestamp": t3_time.isoformat(),
         "sender_account": mule2["account_id"],
         "receiver_account": off_ramp["account_id"],
@@ -119,7 +121,7 @@ def create_mule_network_fan_out(banks, start_time, network_id):
         split_amount = int(base_amount / num_mules)
         current_time += timedelta(minutes=random.randint(1, 15))
         transactions.append({
-            "transaction_id": f"TXN_{uuid.uuid4().hex[:10].upper()}",
+            "transaction_id": f"TXN_{''.join(random.choices('0123456789ABCDEF', k=10))}",
             "timestamp": current_time.isoformat(),
             "sender_account": source["account_id"],
             "receiver_account": m["account_id"],
@@ -163,7 +165,7 @@ def create_mule_network_fan_in(banks, start_time, network_id):
         amount = random.randint(10000, 50000)
         current_time += timedelta(minutes=random.randint(1, 15))
         transactions.append({
-            "transaction_id": f"TXN_{uuid.uuid4().hex[:10].upper()}",
+            "transaction_id": f"TXN_{''.join(random.choices('0123456789ABCDEF', k=10))}",
             "timestamp": current_time.isoformat(),
             "sender_account": m["account_id"],
             "receiver_account": dest["account_id"],
@@ -209,7 +211,7 @@ def create_cross_bank_mule_network(banks, start_time, network_id):
         current_time += timedelta(minutes=random.randint(1, 20))
         tx_type = "TRANSFER" if receiver["account_type"] != "OFF_RAMP" else "OFF_RAMP"
         transactions.append({
-            "transaction_id": f"TXN_{uuid.uuid4().hex[:10].upper()}",
+            "transaction_id": f"TXN_{''.join(random.choices('0123456789ABCDEF', k=10))}",
             "timestamp": current_time.isoformat(),
             "sender_account": sender["account_id"],
             "receiver_account": receiver["account_id"],

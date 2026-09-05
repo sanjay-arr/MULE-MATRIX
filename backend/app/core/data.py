@@ -40,7 +40,9 @@ class DataStore:
             # 4. Train Model
             print("Training ML model...")
             from ml.train import train_model
+            from ml.evaluate import evaluate_model
             train_model()
+            evaluate_model()
             
         except Exception as e:
             import traceback
@@ -60,7 +62,7 @@ class DataStore:
         detection_path = os.path.join(base_dir, "processed", "detection_results.csv")
         transactions_path = os.path.join(base_dir, "raw", "transactions.csv")
 
-        if not (os.path.exists(accounts_path) and os.path.exists(detection_path) and os.path.exists(transactions_path)):
+        if True:
             if not self.pipeline_initialized:
                 self._initialize_data_pipeline(os.path.dirname(__file__))
                 self.pipeline_initialized = True

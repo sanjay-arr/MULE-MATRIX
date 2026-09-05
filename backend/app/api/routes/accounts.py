@@ -48,7 +48,9 @@ def get_accounts(
         accounts.append({
             "account_id": row['account_id'],
             "bank_id": row['bank_id'],
-            "account_type": row.get('account_type', 'UNKNOWN')
+            "account_type": row.get('account_type', 'UNKNOWN'),
+            "risk_level": row.get('risk_level', None),
+            "is_suspicious": bool(row.get('is_suspicious', False))
         })
 
     return {

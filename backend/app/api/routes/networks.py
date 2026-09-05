@@ -35,14 +35,15 @@ def _ensure_networks():
             if seed in seen_accounts:
                 continue
             
+            seen_accounts.add(seed)
+            
             net = ns.reconstruct_network(seed, max_hops=3)
             if net and len(net['accounts']) > 1:
                 _networks_list.append(net)
                 _network_cache[net['network_id']] = net
                 seen_accounts.update(net['accounts'])
                 
-            # Stop once we have found the 10 distinct networks
-            if len(_networks_list) >= 10:
+            if len(_networks_list) >= 20:
                 break
 
 @router.get("", response_model=NetworkListResponse)

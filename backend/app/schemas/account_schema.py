@@ -5,6 +5,8 @@ class AccountBase(BaseModel):
     account_id: str
     bank_id: str
     account_type: str
+    risk_level: Optional[str] = None
+    is_suspicious: Optional[bool] = None
 
 class AccountListResponse(BaseModel):
     accounts: List[AccountBase]
