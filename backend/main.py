@@ -7,6 +7,10 @@ app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
     description="FastAPI backend exposing Mule Matrix intelligence through REST APIs.",
+    openapi_url="/openapi.json",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    root_path="",  # Prevent reverse proxies from stripping standard paths
 )
 
 import os
@@ -31,6 +35,12 @@ app.add_middleware(
 )
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+from fastapi.responses import RedirectResponse
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
 
 if __name__ == "__main__":
     import uvicorn
