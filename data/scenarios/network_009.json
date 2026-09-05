@@ -1,0 +1,11 @@
+{
+  "type": "create_mule_network_fan_out",
+  "accounts_involved": [
+    "MUL_SRC_94086510",
+    "MUL_DEST_0_AA6899AF",
+    "MUL_DEST_1_3DD762A5",
+    "MUL_DEST_2_86E5CC71",
+    "MUL_DEST_3_5B76DB07"
+  ],
+  "transaction_count": 4
+}

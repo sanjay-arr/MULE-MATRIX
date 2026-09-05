@@ -1,0 +1,52 @@
+Starting training...
+Loading datasets...
+Building features...
+Accounts: 1607
+Features: 21
+Training samples: 1285
+Testing samples: 322
+
+Model: Random Forest
+
+Training complete.
+Model saved successfully.
+Starting evaluation...
+
+MODEL EVALUATION
+----------------
+Dataset: Synthetic
+Test samples: 322
+
+Precision: 0.9412
+Recall: 0.9412
+F1 Score: 0.9412
+ROC-AUC: 0.9998
+
+Confusion Matrix:
+[[304   1]
+ [  1  16]]
+
+Feature Importance
+------------------
+total_transaction_count        15.99%
+unique_counterparties          14.82%
+unique_sending_accounts        13.69%
+cross_bank_transactions        13.36%
+incoming_transaction_count     10.59%
+unique_receiving_accounts      7.07%
+outgoing_cross_bank_count      5.72%
+incoming_cross_bank_count      5.45%
+outgoing_transaction_count     2.78%
+total_outgoing_amount          1.95%
+account_age_days               1.94%
+total_incoming_amount          1.16%
+incoming_outgoing_ratio        1.05%
+total_transaction_amount       0.88%
+max_transaction_amount         0.71%
+max_incoming_amount            0.67%
+avg_incoming_amount            0.64%
+avg_outgoing_amount            0.60%
+pass_through_ratio             0.44%
+max_outgoing_amount            0.29%
+avg_transaction_amount         0.21%
+Done!

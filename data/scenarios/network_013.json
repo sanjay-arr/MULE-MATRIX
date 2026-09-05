@@ -1,0 +1,10 @@
+{
+  "type": "create_mule_network_pass_through",
+  "accounts_involved": [
+    "VIC_DC6AFAE8",
+    "MUL_F38117E5",
+    "MUL_E8D8F158",
+    "OFF_006CE0C7"
+  ],
+  "transaction_count": 3
+}

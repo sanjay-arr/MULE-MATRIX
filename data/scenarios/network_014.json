@@ -1,0 +1,10 @@
+{
+  "type": "create_cross_bank_mule_network",
+  "accounts_involved": [
+    "VIC_59A252E6",
+    "MUL_A_DECFBA67",
+    "MUL_B_117930D9",
+    "OFF_53127633"
+  ],
+  "transaction_count": 3
+}
