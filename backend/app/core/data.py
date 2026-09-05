@@ -43,7 +43,11 @@ class DataStore:
             train_model()
             
         except Exception as e:
+            import traceback
             print(f"Error initializing data pipeline: {e}")
+            print("--- DATA PIPELINE TRACEBACK ---")
+            traceback.print_exc()
+            print("-------------------------------")
         finally:
             os.chdir(old_cwd)
             sys.argv = old_argv

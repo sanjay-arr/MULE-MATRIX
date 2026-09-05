@@ -5,7 +5,10 @@ import json
 import os
 import pandas as pd
 from datetime import datetime, timedelta
-from generate_scenarios import generate_fraud_scenarios, random_date, generate_account_id, generate_device_id, generate_location
+try:
+    from scripts.generate_scenarios import generate_fraud_scenarios, random_date, generate_account_id, generate_device_id, generate_location
+except ModuleNotFoundError:
+    from generate_scenarios import generate_fraud_scenarios, random_date, generate_account_id, generate_device_id, generate_location
 
 def validate_data(accounts, transactions):
     print("Validating data...")
