@@ -14,8 +14,10 @@ function App() {
     <Router>
       <div className="app-container">
         <Sidebar />
+
         <div className="main-content">
           <Header />
+
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
