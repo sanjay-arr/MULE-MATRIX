@@ -5,9 +5,16 @@ router = APIRouter()
 
 @router.get("")
 def health_check():
+    from backend.app.core.data import data_store
+    
+    dataset_status = "missing"
+    if data_store.accounts_df is not None and data_store.detection_df is not None:
+        dataset_status = "initialized"
+        
     return {
         "status": "healthy",
-        "service": "mule-matrix"
+        "service": "mule-matrix",
+        "dataset": dataset_status
     }
 
 @router.get("/neo4j")
